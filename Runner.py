@@ -1,7 +1,6 @@
 from Team import Team 
 
 
-
 print("Bienvenido al Score Manager")
 teams=[]
 x=1
@@ -18,6 +17,30 @@ while (x!=0):
             print("----------------------------------------")
             print (f"Nombre del equipo:{team.name}\nCantidad de jugadores:{team.size}\nPuntos acumulados:{team.score}\n")
 
+    if opcion==3:
+        primero=input("Ingrese el nombre del primer equipo que jugará\n")
+        segundo=input("Ingrese el nombre del contrincante\n")
+        contrincantes=[]
+        print("PARTIDO ENTRE:\n")
+        for team in teams:
+            if primero==team.name:
+                contrincantes.append(team)
+                print("----------------------------------------")
+                print (f"Nombre del equipo:{team.name}\nCantidad de jugadores:{team.size}\nPuntos acumulados:{team.score}\n")
+            elif segundo==team.name:
+                contrincantes.append(team)
+                print("----------------------------------------")
+                print (f"Nombre del equipo:{team.name}\nCantidad de jugadores:{team.size}\nPuntos acumulados:{team.score}\n")
+            else:
+                print ("El equipo no se encuentra en el torneo\n")
+            op=int(input("1.Agregar un punto\n2.Terminar el partido\n"))
+            if op==1:
+                i=1
+                for team in contrincantes:
+                    print (f"{i}.{team.name}\n")
+                    i+=1
+        
+        
     if opcion==4:
         x=0
         exit()
