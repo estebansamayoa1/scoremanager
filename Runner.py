@@ -1,38 +1,40 @@
 from Team import Team 
 
-
-print("Bienvenido al Score Manager")
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print("BIENVENIDO AL SCORE MANAGER")
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 teams=[]
 x=1
 while (x!=0):
-    print("1.Ingresar Equipos\n2.Ver Equipos\n3.Match\n4.Salir\n")
+    print("\n1.Ingresar Equipos\n2.Ver Equipos\n3.Match\n4.Salir\n")
     opcion=int(input())
     if opcion==1:
-        nombre=input("Ingrese el nombre del equipo")
-        size=input("Ingrese la cantidad de jugadores")
+        nombre=input("Ingrese el nombre del equipo: ")
+        size=input("Ingrese la cantidad de jugadores: ")
         teams.append(Team(nombre, size, 0))
 
     if opcion==2:
+        print("LOS EQUIPOS INSCRITOS AL TORNEO SON: ")
         for team in teams:
             print("----------------------------------------")
-            print (f"Nombre del equipo:{team.name}\nCantidad de jugadores:{team.size}\nPuntos acumulados:{team.score}\n")
+            print (f"Nombre del Equipo: {team.name}\nCantidad de Jugadores: {team.size}\nPuntos Acumulados: {team.score}\n")
 
     if opcion==3:
-        primero=input("Ingrese el nombre del primer equipo que jugará\n")
-        segundo=input("Ingrese el nombre del contrincante\n")
+        primero=input("Ingrese el nombre del primer equipo que jugara: \n")
+        segundo=input("Ingrese el nombre del contrincante: \n")
         contrincantes=[]
-        print("PARTIDO ENTRE:\n")
+        print("PARTIDO EN JUEGO: \n")
         for team in teams:
             if primero==team.name:
                 contrincantes.append(team)
                 print("----------------------------------------")
-                print (f"Nombre del equipo:{team.name}\nCantidad de jugadores:{team.size}\nPuntos acumulados:{team.score}\n")
+                print (f"Nombre del Equipo: {team.name}\nCantidad de Jugadores: {team.size}\nPuntos Acumulados: {team.score}\n")
             elif segundo==team.name:
                 contrincantes.append(team)
                 print("----------------------------------------")
-                print (f"Nombre del equipo:{team.name}\nCantidad de jugadores:{team.size}\nPuntos acumulados:{team.score}\n")
+                print (f"Nombre del Equipo: {team.name}\nCantidad de Jugadores: {team.size}\nPuntos Acumulados: {team.score}\n")
             else:
-                print ("El equipo no se encuentra en el torneo\n")
+                print ("El equipo no se encuentra en el torneo.\n")
             op=int(input("1.Agregar un punto\n2.Terminar el partido\n"))
             if op==1:
                 i=1
