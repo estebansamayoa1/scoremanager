@@ -1,9 +1,10 @@
 from Team import Team 
+from Linked_List import Node, LinkedList
 
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print("BIENVENIDO AL SCORE MANAGER")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-teams=[]
+teams = LinkedList()
 x=1
 while (x!=0):
     print("\n1.Ingresar Equipos\n2.Ver Equipos\n3.Match\n4.Salir\n")
