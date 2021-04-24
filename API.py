@@ -17,6 +17,8 @@ def view():
 
 @app.route("/create", methods=["GET", "POST"])
 def create():
+    championship = request.args.get("ChampName", " ")
+    
     return render_template("create.html")
 
 if __name__ == "__main__":

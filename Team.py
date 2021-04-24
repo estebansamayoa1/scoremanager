@@ -11,5 +11,5 @@ class Team:
         self.winner=True
 
     def __str__(self):
-        return self.name
+        return self.name + "\nScore: " + str(self.score)
 

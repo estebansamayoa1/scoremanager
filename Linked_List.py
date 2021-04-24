@@ -3,24 +3,21 @@ class Node:
     self.data = data
     self.next = None
 
-  def __repr__(self):
-    return self.data
+  def __str__(self):
+    return str(self.data)
 
 class LinkedList:
   def __init__(self):
     self.head = None
 
-  def __repr__(self): #cambiarlo
+  def __str__(self): #cambiarlo
     node = self.head
     nodes = []
     while node is not None:
-      nodes.append(node.data)
+      nodes.append(str(node.data))
       node = node.next
     return nodes
   
-  def __str__(self):
-    return super().__str__()
-    
   def traverse(self):
     node = self.head
     while node is not None:
