@@ -24,9 +24,5 @@ class Team:
         return str(self.score)
 
     def __str__(self):
-<<<<<<< Updated upstream
-        return self.name + "\nScore: " + str(self.score)
-=======
         return self.name + "\nScore: " + str(self.score)+"\nRank: "+str(self.rank)
 
->>>>>>> Stashed changes
