@@ -3,6 +3,7 @@ from jinja2 import Template, FileSystemLoader, Environment
 from Team import Team
 from Championship import Championship
 from Linked_List import LinkedList, Node
+from BinaryTree import Nodes, BinarySearchTree
 import csv 
 
 domain = "0.0.0.0:5000/"
@@ -92,8 +93,11 @@ def match(name):
 @app.route("/summary/<name>", methods=["GET","POST"])
 def summary(name):
     listaScores = teams.finalScores(teams.getScores())
+    tree  = BinarySearchTree()
+    for n in listaScores:
+        tree.insert(tree.root, n)
+    Nodes.visualization(tree.root) 
     listaTeams = teams.teamNames(listaScores)
-    print(listaTeams)
     return render_template("summary.html", listaScores = listaScores, listaTeams = listaTeams, name = name)
 
 
