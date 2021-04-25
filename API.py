@@ -60,7 +60,7 @@ def view(name):
                     champ.newChampTeam(teams)
                 else:
                     raise Exception
-            return render_template("view.html", Champname = name, allTeams = teams.turnDict())                   
+            return render_template("view.html", Champname = makeTwoWords(name), name = name, allTeams = teams.turnDict())                   
     return render_template("view.html", Champname = makeTwoWords(name), allTeams = teams.turnDict())
 
 @app.route("/match/<name>", methods=["GET", "POST"])
