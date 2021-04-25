@@ -38,10 +38,6 @@ def view(name):
     if (request.method == "POST"):
         FirstTeamName = request.form['FirstTeam']
         SecondTeamName = request.form['SecondTeam']
-        Team1 = request.form['Team1']
-        Team2 = request.form['Team2']
-        Goal1 = request.form['Goal1']
-        Goal2 = request.form['Goal2']
         if (FirstTeamName != None and SecondTeamName != None):
             teams.insert_last(Node(Team(FirstTeamName, 0)))
             teams.insert_last(Node(Team(SecondTeamName, 0)))
@@ -50,8 +46,17 @@ def view(name):
                     champ.newChampTeam(teams)
                 else:
                     raise Exception
-            return render_template("view.html", Champname = name, allTeams = teams.turnDict())
-        elif (Team1 != None and Team2 != None and Goal1 != None and Goal2 != None):
+            return render_template("view.html", Champname = name, allTeams = teams.turnDict())                   
+    return render_template("view.html", Champname = name, allTeams = teams.turnDict())
+
+@app.route("/match/<name>", methods=["GET", "POST"])
+def match(name):
+    if (request.method == "POST"):
+        Team1 = request.form['Team1']
+        Team2 = request.form['Team2']
+        Goal1 = request.form['Goal1']
+        Goal2 = request.form['Goal2']
+        if (Team1 != None and Team2 != None and Goal1 != None and Goal2 != None):
             if (teams.ElementConfirmation(Team1) == True and teams.ElementConfirmation(Team2) == True):
                 team1 = teams.getElement(Team1)
                 teams.remove(team1)
@@ -61,8 +66,8 @@ def view(name):
                 teams.remove(team2)
                 team2.setScore(Goal2)
                 teams.insert_last(Node(team2))
-        return render_template("view.html", Champname = name, allTeams = teams.turnDict())                     
-    return render_template("view.html", Champname = name, allTeams = teams.turnDict())
+        return render_template("view.html", allTeams = teams.turnDict())  
+    return render_template("match.html", name = name)
 
 
 if __name__ == "__main__":

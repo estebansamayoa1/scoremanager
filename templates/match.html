@@ -22,8 +22,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
 <div class="w3-top w3-hide-small">
   <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
     <a href="/" class="w3-bar-item w3-button">HOME</a>
-    <a href="/view" class="w3-bar-item w3-button">Enrollment</a>
-    <a href="/view" class="w3-bar-item w3-button">Teams</a>
+    <a href="/view/{{name}}" class="w3-bar-item w3-button">Teams</a>
     <a href="/match" class="w3-bar-item w3-button">Match</a>
   </div>
 </div>
@@ -33,15 +32,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     <div class="w3-content">
       <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">Live Match!</h1>
       <p>Game time!</p>
-      <form method = "POST" action = "">
-        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team" name="Team1"></p>
-        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team" name="Team2"></p>
-      </form>
-      <p class="w3-xxlarge"><strong>Score!</strong> Keep track and input the amount of goals registered for each team and then submit them!</p>
-      <form method = "POST" action = "">  
-          <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Goals Team 1" name="Goal1"></p>
-          <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Goals Team 2" name="Goal2"></p>
-        <p><button class="w3-button w3-light-grey w3-block" type="submit">End Match and Submit Results</button></p>
+      <form method = "POST" action = " ">
+            <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team" name="Team1"><br>
+            <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team" name="Team2">
+            <p class="w3-xxlarge"><strong>Score!</strong> Keep track and input the amount of goals registered for each team and then submit them!</p>  
+            <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Goals Team 1" name="Goal1"></p>
+            <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Goals Team 2" name="Goal2"></p>
+            <p><button class="w3-button w3-light-grey w3-block" type="submit">End Match and Submit Results</button></p>
       </form>
     </div>
   </div>
