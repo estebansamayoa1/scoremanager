@@ -61,7 +61,7 @@ def view(name):
                 else:
                     raise Exception
             return render_template("view.html", Champname = makeTwoWords(name), name = name, allTeams = teams.turnDict())                   
-    return render_template("view.html", Champname = makeTwoWords(name), allTeams = teams.turnDict())
+    return render_template("view.html", Champname = makeTwoWords(name), name = name, allTeams = teams.turnDict())
 
 @app.route("/match/<name>", methods=["GET", "POST"])
 def match(name):
@@ -80,6 +80,9 @@ def match(name):
                 teams.remove(team2)
                 team2.setScore(Goal2, Goal1)
                 teams.insert_last(Node(team2))
+                for champ in championships:
+                    if (name == champ.getChampName()):
+                        champ.newChampTeam(teams)
         return redirect(url_for("view", allTeams = teams.turnDict(), name = name))  
     return render_template("match.html", name = name)
 
