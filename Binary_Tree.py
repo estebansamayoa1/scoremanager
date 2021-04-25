@@ -1,19 +1,27 @@
 from math import log
 class Node:
+<<<<<<< HEAD:BinaryTree.py
     def __init__(self, rank):
         self.data = rank
         self.left_child = None
         self.right_child = None
+=======
+  def __init__(self, equipo1, equipo2):
+    self.data = None
+    self.left_child = equipo1
+    self.right_child = equipo2
+>>>>>>> cc8be1d116c6a64c381cef13f28812af97548189:Binary_Tree.py
 
 
-    def get_children(self):
-        children = []
-        if self.left_child is not None:
-            children.append(self.left_child.data)
-        if self.right_child is not None:
-            children.append(self.right_child.data)
-        return children
+  def get_children(self):
+    children = []
+    if self.left_child is not None:
+        children.append(self.left_child.data)
+    if self.right_child is not None:
+        children.append(self.right_child.data)
+    return children
 
+<<<<<<< HEAD:BinaryTree.py
     def getdata(self, equipo1, equipo2):
         if equipo1==True:
             self.data=equipo1
@@ -24,6 +32,18 @@ class Node:
    
     def __repr__(self):
         return "Data: " + str(self.getdata(True, False)) + ", Children: " + str(self.get_children())
+=======
+  def getdata(self, equipo1, equipo2):
+    if equipo1==True:
+        self.data=equipo1
+    if equipo2==True:
+        self.data=equipo2
+    return self.data
+
+
+  def __repr__(self):
+    return "Data: " + str(self.getdata(True, False)) + ", Children: " + str(self.get_children())
+>>>>>>> cc8be1d116c6a64c381cef13f28812af97548189:Binary_Tree.py
 
 
 class BinaryTree:
@@ -39,11 +59,24 @@ class BinaryTree:
         return
 
 
+<<<<<<< HEAD:BinaryTree.py
     def inorder_traverse(self, root):
         if root is not None:
             self.inorder_traverse(root.right_child)
             print(root.data)
             self.inorder_traverse(root.left_child)
+=======
+  def inorder_traverse(self, root):
+    if root is not None:
+      self.inorder_traverse(root.left_child)
+      print(root.data)
+      self.inorder_traverse(root.right_child)
+    
+
+  def search(self, root, key):
+    if root is None:
+      return "Key not found in tree :("
+>>>>>>> cc8be1d116c6a64c381cef13f28812af97548189:Binary_Tree.py
 
         
     def search(self, root, key):
