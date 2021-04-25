@@ -47,9 +47,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     </div>
     <div id="group1" class="w3-container menu w3-padding-32 w3-white">
       <tbody>
-        {% for name, scores in allTeams.items() %} 
+        {% for name, score in allTeams.items() %} 
         <tr>
-          <th scope = "col"><h1><strong>{{name}}</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Goles: {{scores}}</span></h1>
+          <th scope = "col"><h1><strong>{{name}}</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Points: {{score}}</span></h1>
           <hr></th>
         </tr>
         {% endfor %} 

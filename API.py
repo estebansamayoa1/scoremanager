@@ -52,7 +52,7 @@ def view(name):
 @app.route("/match/<name>", methods=["GET", "POST"])
 def match(name):
     if (request.method == "POST"):
-        Team1 = request.form['Team1']
+        Team1 = request.form['Team1'] 
         Team2 = request.form['Team2']
         Goal1 = request.form['Goal1']
         Goal2 = request.form['Goal2']
@@ -60,11 +60,11 @@ def match(name):
             if (teams.ElementConfirmation(Team1) == True and teams.ElementConfirmation(Team2) == True):
                 team1 = teams.getElement(Team1)
                 teams.remove(team1)
-                team1.setScore(Goal1)
+                team1.setScore(Goal1, Goal2)
                 teams.insert_last(Node(team1))
                 team2 = teams.getElement(Team2)
                 teams.remove(team2)
-                team2.setScore(Goal2)
+                team2.setScore(Goal2, Goal1)
                 teams.insert_last(Node(team2))
         return render_template("view.html", allTeams = teams.turnDict())  
     return render_template("match.html", name = name)

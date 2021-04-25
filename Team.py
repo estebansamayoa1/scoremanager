@@ -1,18 +1,21 @@
 class Team:
     def __init__(self, name, score):
         self.name = name
-        self.score=score
+        self.score=0
         self.winner=False 
 
     def getName(self):
         return self.name
 
-    def win(self):
-        self.winner=True
 
-    def setScore(self, score):
-        self.score = score
-    
+    def setScore(self, score1, score2):
+        if score1>score2:
+            self.score+=3
+        if score2>score1:
+            self.score+=0
+        if score1==score2:
+            self.score+=1
+
     def getScore(self):
         return str(self.score)
 
