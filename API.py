@@ -15,6 +15,19 @@ count=1
 
 
 app = Flask(__name__)
+def makeOneWord(word):
+    word = ['-'.join(x.split(' ')) for x in word]
+    stri = ""
+    for letter in word:
+        stri += letter
+    return stri
+
+def makeTwoWords(word):
+    word = [' '.join(x.split('-')) for x in word]
+    stri = ""
+    for letter in word:
+        stri += letter
+    return stri
 
 @app.route("/", methods=["GET", "POST"])
 def inicio():
@@ -23,9 +36,10 @@ def inicio():
 @app.route("/create", methods=["GET", "POST"])
 def create():
     if (request.method == "POST"):
-        Champname = request.form['ChampName']
-        FirstTeamName = request.form['FirstTeam']
-        NextTeam = request.form['NextTeam']
+        Champname1 = request.form['ChampName'].upper()
+        Champname = makeOneWord(Champname1)
+        FirstTeamName = request.form['FirstTeam'].upper()
+        NextTeam = request.form['NextTeam'].upper()
         if (Champname):
             teams.head = Node(Team(FirstTeamName, 0, count))
             next_team = Node(Team(NextTeam, 0, count+1))
@@ -39,8 +53,8 @@ def create():
 @app.route("/view/<name>", methods=["GET", "POST"])
 def view(name):
     if (request.method == "POST"):
-        FirstTeamName = request.form['FirstTeam']
-        SecondTeamName = request.form['SecondTeam']
+        FirstTeamName = request.form['FirstTeam'].upper()
+        SecondTeamName = request.form['SecondTeam'].upper()
         if (FirstTeamName != None and SecondTeamName != None):
             teams.insert_last(Node(Team(FirstTeamName, 0, count+1)))
             teams.insert_last(Node(Team(SecondTeamName, 0, count+1)))
@@ -49,14 +63,14 @@ def view(name):
                     champ.newChampTeam(teams)
                 else:
                     raise Exception
-            return render_template("view.html", Champname = name, allTeams = teams.turnDict())                   
-    return render_template("view.html", Champname = name, allTeams = teams.turnDict())
+            return render_template("view.html", Champname = makeTwoWords(name), name = name, allTeams = teams.turnDict())                   
+    return render_template("view.html", Champname = makeTwoWords(name), allTeams = teams.turnDict())
 
 @app.route("/match/<name>", methods=["GET", "POST"])
 def match(name):
     if (request.method == "POST"):
-        Team1 = request.form['Team1'] 
-        Team2 = request.form['Team2']
+        Team1 = request.form['Team1'].upper()
+        Team2 = request.form['Team2'].upper()
         Goal1 = request.form['Goal1']
         Goal2 = request.form['Goal2']
         if (Team1 != None and Team2 != None and Goal1 != None and Goal2 != None):
@@ -69,7 +83,7 @@ def match(name):
                 teams.remove(team2)
                 team2.setScore(Goal2, Goal1)
                 teams.insert_last(Node(team2))
-        return render_template("view.html", allTeams = teams.turnDict())  
+        return redirect(url_for("view", allTeams = teams.turnDict(), name = name))  
     return render_template("match.html", name = name)
 
 

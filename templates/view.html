@@ -22,7 +22,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
 <div class="w3-top w3-hide-small">
   <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
     <a href="/" class="w3-bar-item w3-button">HOME</a>
-    <a href="/match/{{Champname}}" class="w3-bar-item w3-button">Match</a>
+    <a href="/match/{{name}}" class="w3-bar-item w3-button">Match</a>
   </div>
 </div>
   
@@ -47,9 +47,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     </div>
     <div id="group1" class="w3-container menu w3-padding-32 w3-white">
       <tbody>
-        {% for name, score in allTeams.items() %} 
+        {% for TeamName, score in allTeams.items() %} 
         <tr>
-          <th scope = "col"><h1><strong>{{name}}</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Points: {{score}}</span></h1>
+          <th scope = "col"><h1><strong>{{TeamName}}</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Points: {{score}}</span></h1>
           <hr></th>
         </tr>
         {% endfor %} 
@@ -68,7 +68,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
       <form method = "POST" action = "">
         <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team's Name" name="FirstTeam"></p>
         <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team's Name" name="SecondTeam"></p>
-        <p><button class="w3-button w3-light-grey w3-block" type="submit">Enroll Team</button></p>
+        <p><button class="w3-button w3-light-grey w3-block" type="submit">Enroll Teams</button></p>
       </form>
     </div>
   </div>
