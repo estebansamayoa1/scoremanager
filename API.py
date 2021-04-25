@@ -80,7 +80,7 @@ def match(name):
                 teams.remove(team2)
                 team2.setScore(Goal2, Goal1)
                 teams.insert_last(Node(team2))
-        return render_template("view.html", allTeams = teams.turnDict())  
+        return redirect(url_for("view", allTeams = teams.turnDict(), name = name))  
     return render_template("match.html", name = name)
 
 
