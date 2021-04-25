@@ -3,6 +3,7 @@ from jinja2 import Template, FileSystemLoader, Environment
 from Team import Team
 from Championship import Championship
 from Linked_List import LinkedList, Node
+import csv 
 
 domain = "0.0.0.0:5000/"
 first = True
@@ -10,6 +11,8 @@ templates = FileSystemLoader('templates')
 environment = Environment(loader = templates)
 teams=LinkedList()
 championships = []
+count=1
+
 
 app = Flask(__name__)
 def makeOneWord(word):
@@ -38,8 +41,8 @@ def create():
         FirstTeamName = request.form['FirstTeam'].upper()
         NextTeam = request.form['NextTeam'].upper()
         if (Champname):
-            teams.head = Node(Team(FirstTeamName, 0))
-            next_team = Node(Team(NextTeam, 0))
+            teams.head = Node(Team(FirstTeamName, 0, count))
+            next_team = Node(Team(NextTeam, 0, count+1))
             teams.insert_last(next_team)
             newChamp = Championship(Champname, teams, None)
             championships.append(newChamp)
@@ -53,8 +56,8 @@ def view(name):
         FirstTeamName = request.form['FirstTeam'].upper()
         SecondTeamName = request.form['SecondTeam'].upper()
         if (FirstTeamName != None and SecondTeamName != None):
-            teams.insert_last(Node(Team(FirstTeamName, 0)))
-            teams.insert_last(Node(Team(SecondTeamName, 0)))
+            teams.insert_last(Node(Team(FirstTeamName, 0, count+1)))
+            teams.insert_last(Node(Team(SecondTeamName, 0, count+1)))
             for champ in championships:
                 if (name == champ.getChampName()):
                     champ.newChampTeam(teams)

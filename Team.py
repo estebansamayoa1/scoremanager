@@ -1,5 +1,6 @@
 class Team:
-    def __init__(self, name, score):
+    def __init__(self, name, score, rank):
+        self.rank=rank
         self.name = name
         self.score=0
         self.winner=False 
