@@ -26,6 +26,24 @@ class LinkedList:
       print(node.data)
       node = node.next
 
+  def rank_teams(self):
+    node = self.head
+    count=1
+    while node is not None:
+      node.data.setRank(count)
+      node = node.next
+      count+=1
+    return count
+  
+  def last_team(self):
+    node = self.head
+    count=1
+    while node is not None:
+      node.data.setRank(count)
+      node = node.next
+      count+=1
+    return count
+
   def __iter__(self):
     node = self.head
     while node is not None:
@@ -36,6 +54,14 @@ class LinkedList:
     node.next = self.head
     self.head = node
 
+  def index(self):
+    node = self.head
+    count = 0
+    while node is not None:
+      count+=1
+      node = node.next
+    return count
+
   def insert_last(self, node):
     if self.head is None:
       self.head = node
@@ -43,6 +69,13 @@ class LinkedList:
       for current_node in self:
         pass
       current_node.next = node
+  
+  def get_lastRank(self):
+    for current_node in self:
+      pass
+    return current_node.data.rank
+      
+
     
   def remove(self, node_data):
     if self.head is None:

@@ -30,6 +30,12 @@ def makeTwoWords(word):
         stri += letter
     return stri
 
+def rank_teams(teams, count):
+    for team in teams:
+        team.rank=count
+        count+=1
+
+
 @app.route("/", methods=["GET", "POST"])
 def inicio():
     return render_template("inicio.html")

@@ -1,12 +1,15 @@
 class Team:
     def __init__(self, name, score, rank):
-        self.rank=rank
+        self.rank=rank 
         self.name = name
         self.score=0
         self.winner=False 
 
     def getName(self):
         return self.name
+
+    def setRank(self, rank):
+        self.rank=rank
 
 
     def setScore(self, score1, score2):
@@ -21,4 +24,9 @@ class Team:
         return str(self.score)
 
     def __str__(self):
+<<<<<<< Updated upstream
         return self.name + "\nScore: " + str(self.score)
+=======
+        return self.name + "\nScore: " + str(self.score)+"\nRank: "+str(self.rank)
+
+>>>>>>> Stashed changes
