@@ -93,3 +93,22 @@ class LinkedList:
       info[node.data.getName()] = node.data.getScore()
       node = node.next
     return info
+
+  def getScores(self):
+    lista3 = []
+    for node in self:
+      lista3.append(node.data.getScore())
+    return lista3
+
+  def finalScores(self, lista):
+    lista.sort(reverse=True)
+    print(lista)
+    return(lista)
+
+  def teamNames(self, lista):
+    lista2 = []
+    for score in lista:
+      for node in self:
+        if score == node.data.getScore():
+          lista2.append(node.data.getName())
+    return lista2

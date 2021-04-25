@@ -22,4 +22,3 @@ class Team:
 
     def __str__(self):
         return self.name + "\nScore: " + str(self.score)
-
