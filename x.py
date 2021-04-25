@@ -1,6 +1,7 @@
 from Team import Team
 from Linked_List import Node, LinkedList
 from Championship import Championship
+from Binary_Tree import BinaryTree, Node
 
 count = 1
 team_number = 1
@@ -51,6 +52,8 @@ TheTeams = championships[0].getTeams()
 
 dic = TheTeams.turnDict()
 print(dic)
+
+
 
 #while (stop):
     #nombre=input("Ingrese el nombre del primer torneo: ")
