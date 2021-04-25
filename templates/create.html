@@ -33,9 +33,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     <div class="w3-content">
       <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">Create a Championship</h1>
       <p>It's really this easy!</p>
-      <form action="/action_page.php" target="_blank">
-        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Championship Name" required name="ChampName"></p>
-        <p><a class="w3-button w3-light-grey w3-block" type="submit" href="/view" role="button">Start Championship!</a></p>
+      <form method = "POST" action = "">
+        <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Championship Name" name="ChampName"><br>
+        <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="First Team's name" name="FirstTeam"><br>
+        <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Second team's name" name="NextTeam"><br>
+        <button class="w3-button w3-light-grey w3-block" type="submit">Start Championship!</button>
       </form>
     </div>
   </div>

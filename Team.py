@@ -10,6 +10,12 @@ class Team:
     def win(self):
         self.winner=True
 
+    def setScore(self, score):
+        self.score = score
+    
+    def getScore(self):
+        return str(self.score)
+
     def __str__(self):
         return self.name + "\nScore: " + str(self.score)
 

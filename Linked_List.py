@@ -1,3 +1,5 @@
+from Team import Team
+
 class Node:
   def __init__(self, data):
     self.data = data
@@ -14,7 +16,7 @@ class LinkedList:
     node = self.head
     nodes = []
     while node is not None:
-      nodes.append(str(node.data))
+      nodes.append(node.data)
       node = node.next
     return nodes
   
@@ -60,7 +62,7 @@ class LinkedList:
       previous_node = node
     
     raise Exception("El equipo no existe")
-
+  
   def insert_after(self, node_data, new_node):
     if self.head is None:
       raise Exception("No hay ningun equipo registrado")
@@ -72,3 +74,22 @@ class LinkedList:
         return
 
     raise Exception("El equipo no existe")
+
+  def getElement(self, node_name):
+    for node in self:
+      if node_name.upper() == node.data.getName().upper():
+        return node.data
+
+  def ElementConfirmation(self, node_name):
+    for node in self: 
+      if node_name.upper() == node.data.getName().upper():
+        return True
+
+
+  def turnDict(self):
+    node = self.head
+    info = {}
+    while node is not None:
+      info[node.data.getName()] = node.data.getScore()
+      node = node.next
+    return info

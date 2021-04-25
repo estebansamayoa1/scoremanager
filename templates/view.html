@@ -31,7 +31,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
 <!-- Header with image -->
 <header class="bgimg w3-display-container w3-grayscale-min" id="home">
   <div class="w3-display-middle w3-center">
-    <span class="w3-text-white w3-hide-small" style="font-size:100px">Nombre<br>Championship</span>
+    <span class="w3-text-white w3-hide-small" style="font-size:100px">{{Champname}}<br>Championship</span>
     <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size:60px"><strong>Nombre<br>Championship</strong></span>
     <p><a href="#teams" class="w3-button w3-xxlarge w3-black">View Teams</a></p>
   </div>
@@ -44,67 +44,20 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">THE TEAMS</h1>
     <div class="w3-row w3-center w3-border w3-border-dark-grey">
       <a href="javascript:void(0)" onclick="openMenu(event, 'group1');" id="myLink">
-        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">GROUP 1</div>
-      </a>
-      <a href="javascript:void(0)" onclick="openMenu(event, 'group2');">
-        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">GROUP 2</div>
-      </a>
-      <a href="javascript:void(0)" onclick="openMenu(event, 'group3');">
-        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">GROUP 3</div>
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">{{Champname}}</div>
       </a>
     </div>
-
     <div id="group1" class="w3-container menu w3-padding-32 w3-white">
-      <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-      <p class="w3-text-grey">Juegos</p>
-      <hr>
-   
-      <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-      <p class="w3-text-grey">Juegos</p>
-      <hr>
-      
-      <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-      <p class="w3-text-grey">Juegos</p>
-      <hr>
-
-      <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-      <p class="w3-text-grey">Juegos</p>
+      <tbody>
+        {% for name, scores in allTeams.items() %} 
+        <tr>
+          <th scope = "col"><h1><strong>{{name}}</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">{{scores}}</span></h1>
+          <p class="w3-text-grey">Juegos</p>
+          <hr></th>
+        </tr>
+        {% endfor %} 
+      </tbody>
     </div>
-
-    <div id="group2" class="w3-container menu w3-padding-32 w3-white">
-        <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-        <p class="w3-text-grey">Juegos</p>
-        <hr>
-   
-        <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-        <p class="w3-text-grey">Juegos</p>
-        <hr>
-      
-        <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-        <p class="w3-text-grey">Juegos</p>
-        <hr>
-
-        <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-        <p class="w3-text-grey">Juegos</p>
-    </div>
-
-
-    <div id="group3" class="w3-container menu w3-padding-32 w3-white">
-        <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-        <p class="w3-text-grey">Juegos</p>
-        <hr>
-   
-        <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-        <p class="w3-text-grey">Juegos</p>
-        <hr>
-      
-        <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-        <p class="w3-text-grey">Juegos</p>
-        <hr>
-      
-        <h1><strong>Nombre</strong> <span class="w3-right w3-tag w3-dark-grey w3-round">Puntos</span></h1>
-        <p class="w3-text-grey">Juegos</p>
-    </div><br>
 
   </div>
 </div>
@@ -113,11 +66,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
 <div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="enrollment">
     <div class="w3-content">
       <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">Enroll a Team</h1>
-      <p>Fill in all the fields in this form!</p>
+      <p>Add two teams more to your tournaments! Just fill the required fields</p>
       <p><span class="w3-tag">Remember!</span> This info is what is going to be used in order to keep track of the team's performance.</p>
-      <form action="/action_page.php" target="_blank">
-        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team's Name" required name="Name"></p>
-        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Championship" required name="Championship"></p>
+      <form method = "POST" action = "">
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team's Name" name="FirstTeam"></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team's Name" name="SecondTeam"></p>
         <p><button class="w3-button w3-light-grey w3-block" type="submit">Enroll Team</button></p>
       </form>
     </div>
@@ -132,15 +85,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
   <div class="w3-content">
     <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">Live Match!</h1>
     <p>Game time!</p>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team" required name="Team1"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team" required name="Team2"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
+    <form method = "POST" action = "">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team" name="Team1"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Team" name="Team2"></p>
     </form>
     <p class="w3-xxlarge"><strong>Score!</strong> Keep track and input the amount of goals registered for each team and then submit them!</p>
-    <form action="/action_page.php" target="_blank">  
-        <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Goals Team 1" required name="Goalst1"></p>
-        <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Goals Team 2" required name="Goalst2"></p>
+    <form method = "POST" action = "">  
+        <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Goals Team 1" name="Goal1"></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Goals Team 2" name="Goal2"></p>
       <p><button class="w3-button w3-light-grey w3-block" type="submit">End Match and Submit Results</button></p>
     </form>
   </div>
