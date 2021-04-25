@@ -28,9 +28,39 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
 <!-- Places Container -->
 <div class="w3-container w3-padding-64 w3-blue-grey w3-grayscale-min w3-xlarge" id="places">
   <div class="w3-content">
-    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">{{Champname}}</h1>
-    {% for n in listaTeams %}
-    <p>{{n}}</p>
-    {% endfor%}
+    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">summary</h1>
+    <div class="w3-row w3-center w3-border w3-border-blue-grey">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'group1');" id="myLink">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Final Results</div>
+      </a>
+    </div>
+    <div id="group1" class="w3-container menu w3-padding-32 w3-white">
+      <tbody>
+        {% for n,i in listaTeams.items() %} 
+        <tr>
+          <th scope = "col"><h1><strong>{{i}}</strong><span class="w3-right w3-tag w3-dark-grey w3-round">Place: {{n}}</span></h1>
+          <hr></th>
+        </tr>
+        {% endfor %} 
+      </tbody>
+    </div>
   </div>
 </div>
+
+<script>
+  // Tabbed Menu
+  function openMenu(evt, menuName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("menu");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+       tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+    }
+    document.getElementById(menuName).style.display = "block";
+    evt.currentTarget.firstElementChild.className += " w3-red";
+  }
+  document.getElementById("myLink").click();
+  </script>

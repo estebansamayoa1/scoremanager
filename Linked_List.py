@@ -144,10 +144,9 @@ class LinkedList:
       for node in self:
         if score == node.data.getScore():
           lista2.append(node.data.getName())
-    node = self.head
     info = {}
     counter = 0
     for x in range(len(lista2)):
       info[counter + 1] = lista2[counter]
-      counter = counter + 1
+      counter += 1
     return info
