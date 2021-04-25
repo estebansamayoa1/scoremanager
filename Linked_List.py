@@ -12,7 +12,7 @@ class LinkedList:
   def __init__(self):
     self.head = None
 
-  def __str__(self): #cambiarlo
+  def __str__(self): 
     node = self.head
     nodes = []
     while node is not None:
@@ -108,6 +108,7 @@ class LinkedList:
 
     raise Exception("El equipo no existe")
 
+
   def getElement(self, node_name):
     for node in self:
       if node_name.upper() == node.data.getName().upper():
@@ -117,7 +118,6 @@ class LinkedList:
     for node in self: 
       if node_name.upper() == node.data.getName().upper():
         return True
-
 
   def turnDict(self):
     node = self.head
@@ -144,4 +144,10 @@ class LinkedList:
       for node in self:
         if score == node.data.getScore():
           lista2.append(node.data.getName())
-    return lista2
+    node = self.head
+    info = {}
+    counter = 0
+    for x in range(len(lista2)):
+      info[counter + 1] = lista2[counter]
+      counter = counter + 1
+    return info

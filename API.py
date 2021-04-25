@@ -3,7 +3,6 @@ from jinja2 import Template, FileSystemLoader, Environment
 from Team import Team
 from Championship import Championship
 from Linked_List import LinkedList, Node
-from BinaryTree import BinaryTree
 import csv 
 
 domain = "0.0.0.0:5000/"
@@ -13,7 +12,7 @@ environment = Environment(loader = templates)
 teams=LinkedList()
 championships = []
 count=1
-resultados=BinaryTree()
+
 
 app = Flask(__name__)
 def makeOneWord(word):
@@ -30,12 +29,6 @@ def makeTwoWords(word):
         stri += letter
     return stri
 
-def rank_teams(teams, count):
-    for team in teams:
-        team.rank=count
-        count+=1
-
-
 @app.route("/", methods=["GET", "POST"])
 def inicio():
     return render_template("inicio.html")
@@ -48,8 +41,8 @@ def create():
         FirstTeamName = request.form['FirstTeam'].upper()
         NextTeam = request.form['NextTeam'].upper()
         if (Champname):
-            teams.head = Node(Team(FirstTeamName, 0, 0))
-            next_team = Node(Team(NextTeam, 0, 0))
+            teams.head = Node(Team(FirstTeamName, 0, count))
+            next_team = Node(Team(NextTeam, 0, count+1))
             teams.insert_last(next_team)
             newChamp = Championship(Champname, teams, None)
             championships.append(newChamp)
@@ -63,8 +56,8 @@ def view(name):
         FirstTeamName = request.form['FirstTeam'].upper()
         SecondTeamName = request.form['SecondTeam'].upper()
         if (FirstTeamName != None and SecondTeamName != None):
-            teams.insert_last(Node(Team(FirstTeamName, 0, 0)))
-            teams.insert_last(Node(Team(SecondTeamName, 0, 0)))
+            teams.insert_last(Node(Team(FirstTeamName, 0, count+1)))
+            teams.insert_last(Node(Team(SecondTeamName, 0, count+1)))
             for champ in championships:
                 if (name == champ.getChampName()):
                     champ.newChampTeam(teams)
@@ -100,10 +93,9 @@ def match(name):
 def summary(name):
     listaScores = teams.finalScores(teams.getScores())
     listaTeams = teams.teamNames(listaScores)
-    for i in range(len(listaTeams)):
-        resultados.insert(resultados.root, listaTeams[i])
-        resultados.inorder_traverse(resultados.root)
+    print(listaTeams)
     return render_template("summary.html", listaScores = listaScores, listaTeams = listaTeams, name = name)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True)

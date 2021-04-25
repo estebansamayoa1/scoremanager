@@ -1,16 +1,8 @@
-from math import log
 class Node:
-<<<<<<< HEAD:BinaryTree.py
-    def __init__(self, rank):
-        self.data = rank
-        self.left_child = None
-        self.right_child = None
-=======
   def __init__(self, equipo1, equipo2):
     self.data = None
     self.left_child = equipo1
     self.right_child = equipo2
->>>>>>> cc8be1d116c6a64c381cef13f28812af97548189:Binary_Tree.py
 
 
   def get_children(self):
@@ -21,18 +13,6 @@ class Node:
         children.append(self.right_child.data)
     return children
 
-<<<<<<< HEAD:BinaryTree.py
-    def getdata(self, equipo1, equipo2):
-        if equipo1==True:
-            self.data=equipo1
-        if equipo2==True:
-            self.data=equipo2
-        return self.data 
-
-   
-    def __repr__(self):
-        return "Data: " + str(self.getdata(True, False)) + ", Children: " + str(self.get_children())
-=======
   def getdata(self, equipo1, equipo2):
     if equipo1==True:
         self.data=equipo1
@@ -40,32 +20,37 @@ class Node:
         self.data=equipo2
     return self.data
 
-
   def __repr__(self):
     return "Data: " + str(self.getdata(True, False)) + ", Children: " + str(self.get_children())
->>>>>>> cc8be1d116c6a64c381cef13f28812af97548189:Binary_Tree.py
 
 
 class BinaryTree:
-    def __init__(self):
-        self.root = None
-        self.left_child=None
-        self.right_child=None
+  def __init__(self):
+    self.root = None
+    self.left_child=None
+    self.right_child=None
 
 
-    def insert(self, root, rank):
-        if root is None:
-            self.root = Node(rank)
+  def insert(self, root, equipo1, equipo2):
+    if root is None:
+      self.root = Node(equipo1, equipo2)
+      return
+
+    if equipo1.winner == True:
+      if root.left_child is None:
+        root.left_child = Node(equipo1, equipo2)
         return
+      else:
+        self.insert(root.left_child, equipo1, equipo2)
+    
+    if equipo2.winner == True:
+      if root.right_child is None:
+        root.right_child = Node(equipo1, equipo2)
+        return
+      else:
+        self.insert(root.right_child, equipo1, equipo2)
 
 
-<<<<<<< HEAD:BinaryTree.py
-    def inorder_traverse(self, root):
-        if root is not None:
-            self.inorder_traverse(root.right_child)
-            print(root.data)
-            self.inorder_traverse(root.left_child)
-=======
   def inorder_traverse(self, root):
     if root is not None:
       self.inorder_traverse(root.left_child)
@@ -76,42 +61,30 @@ class BinaryTree:
   def search(self, root, key):
     if root is None:
       return "Key not found in tree :("
->>>>>>> cc8be1d116c6a64c381cef13f28812af97548189:Binary_Tree.py
 
-        
-    def search(self, root, key):
-        if root is None:
-            return "Key not found in tree :("
-
-        if root.data == key:
-            return root
-
-        if root.data > key:
-            return self.search(root.left_child, key)
-        
-        if root.data < key: 
-            return self.search(root.right_child, key)
+    if root.data == key:
+      return root
     
-    def tree_size(self, teams):
-        size=teams.get_lastRank()
-        levels = int(log(size, 2))
-        return levels+1
-
-    """def create_nodes(self, size, lc, rc):
-        #Last Level"""
-
-    def find_min(self, root):
-        current_node = root
-
-        while current_node.left_child is not None:
-            current_node = current_node.left_child
-
-        return current_node
+    if root.data > key:
+      return self.search(root.left_child, key)
+    
+    if root.data < key: 
+      return self.search(root.right_child, key)
 
 
-    def find_max(self, root):
-        current_node = root
+  def find_min(self, root):
+    current_node = root
 
-        while current_node.right_child is not None:
-            current_node = current_node.right_child
-        return current_node
+    while current_node.left_child is not None:
+      current_node = current_node.left_child
+
+    return current_node
+
+
+  def find_max(self, root):
+    current_node = root
+
+    while current_node.right_child is not None:
+      current_node = current_node.right_child
+
+    return current_node
