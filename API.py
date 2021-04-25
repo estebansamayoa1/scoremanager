@@ -89,6 +89,9 @@ def match(name):
         return redirect(url_for("view", allTeams = teams.turnDict(), name = name))  
     return render_template("match.html", name = name)
 
+@app.route("/summary", methods=["GET","POST"])
+def summary():
+    return render_template("summary.html")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True)
