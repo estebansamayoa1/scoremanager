@@ -5,6 +5,7 @@ from Championship import Championship
 from Linked_List import LinkedList, Node
 from BinaryTree import Nodes, BinarySearchTree
 import csv 
+from werkzeug.middleware.profiler import ProfilerMiddleware
 
 domain = "0.0.0.0:5000/"
 first = True
@@ -14,8 +15,10 @@ teams=LinkedList()
 championships = []
 count=1
 
-
 app = Flask(__name__)
+
+
+
 def makeOneWord(word):
     word = ['-'.join(x.split(' ')) for x in word]
     stri = ""
@@ -101,5 +104,7 @@ def summary(name):
     return render_template("summary.html", listaScores = listaScores, listaTeams = listaTeams, name = name)
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0",debug=True)
+app.config['PROFILE'] = True
+app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[30])
+app.run(debug = True) 
+    
